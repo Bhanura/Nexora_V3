@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+  mongodb:
+    image: mongo:8.0
+    container_name: nexora-mongodb-dev
+    restart: unless-stopped
+    env_file:
+      - .env.local
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${MONGO_ROOT_USER:-admin}
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_ROOT_PASSWORD:-changeme123}
+      MONGO_INITDB_DATABASE: ${MONGODB_DATABASE:-elanka_chat_ai}
+    ports:
+      - "27018:27017"
+    volumes:
+      - mongodb_data_dev:/data/db
+
+  qdrant:
+    image: qdrant/qdrant:latest
+    container_name: nexora-qdrant-dev
+    restart: unless-stopped
+    ports:
+      - "6333:6333"
+    volumes:
+      - qdrant_storage_dev:/qdrant/storage
+
+volumes:
+  mongodb_data_dev:
+    driver: local
+  qdrant_storage_dev:
+    driver: local

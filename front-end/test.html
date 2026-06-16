@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Client Website Test</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      background: #f0f0f0;
+      padding: 50px;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>My Awesome Company</h1>
+  <p>This mimics a client's website.</p>
+  <!-- Option 2: Load widget from eLanka Chat AI server (Recommended) -->
+  <script>
+    (function () {
+      var script = document.createElement('script');
+      script.src = 'http://localhost:5173/widget.iife.js';
+      script.onload = function () {
+        window.eLankaChatAIWidget.init('nx_Gok4LXAnJH13Gu8IgExM_Zu2Z0gVIvbw', {
+          apiUrl: 'http://localhost:8000/api'
+        });
+      };
+      document.body.appendChild(script);
+    })();
+  </script>
+</body>
+
+</html>

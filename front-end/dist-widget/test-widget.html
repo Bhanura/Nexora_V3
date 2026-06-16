@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>eLanka Chat AI Widget Test - Feature 1</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        .container {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        h1 {
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+        .subtitle {
+            color: #666;
+            margin-bottom: 30px;
+        }
+        .test-section {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+            border-left: 4px solid #667eea;
+        }
+        .test-section h3 {
+            margin-top: 0;
+            color: #333;
+        }
+        .checklist {
+            list-style: none;
+            padding: 0;
+        }
+        .checklist li {
+            padding: 10px;
+            margin: 5px 0;
+            background: white;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+        .checklist li:before {
+            content: "✓ ";
+            color: #4CAF50;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+        .note {
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            border-radius: 5px;
+            padding: 15px;
+            margin: 20px 0;
+        }
+        .note strong {
+            color: #856404;
+        }
+        code {
+            background: #272822;
+            color: #f8f8f2;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+        }
+        .api-key-input {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 14px;
+            margin: 10px 0;
+        }
+        .btn {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        .btn:hover {
+            background: #5568d3;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+        .widget-status {
+            padding: 10px;
+            border-radius: 5px;
+            margin: 10px 0;
+            display: none;
+        }
+        .widget-status.success {
+            background: #d4edda;
+            border: 1px solid #c3e6cb;
+            color: #155724;
+            display: block;
+        }
+        .widget-status.error {
+            background: #f8d7da;
+            border: 1px solid #f5c6cb;
+            color: #721c24;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🧪 eLanka Chat AI Widget Test - Feature 1</h1>
+        <p class="subtitle">Test Customizable Chatbot Identity</p>
+
+        <div class="test-section">
+            <h3>📋 Pre-Test Checklist</h3>
+            <ul class="checklist">
+                <li>All Docker containers are running (<code>docker-compose ps</code>)</li>
+                <li>You're logged into the dashboard at <code>http://localhost</code></li>
+                <li>You've updated chatbot settings in the "Chatbot Identity" panel</li>
+                <li>You have your API key ready</li>
+            </ul>
+        </div>
+
+        <div class="test-section">
+            <h3>🔑 Initialize Widget</h3>
+            <p>Enter your API key from the dashboard:</p>
+            <input 
+                type="text" 
+                id="apiKeyInput" 
+                class="api-key-input" 
+                placeholder="Paste your API key here (e.g., nx_xxxxxxxxxxxxx)"
+            >
+            <button onclick="initWidget()" class="btn">🚀 Load Widget</button>
+            <div id="widgetStatus" class="widget-status"></div>
+        </div>
+
+        <div class="test-section">
+            <h3>✅ What to Test</h3>
+            <ol>
+                <li><strong>Widget Header:</strong> Should display your custom chatbot name (not "AI Support")</li>
+                <li><strong>Greeting Message:</strong> First message should be your custom greeting</li>
+                <li><strong>Identity Question:</strong> Ask "Who are you?" - Bot should respond with custom name</li>
+                <li><strong>Personality:</strong> Responses should match the personality you set</li>
+            </ol>
+        </div>
+
+        <div class="note">
+            <strong>⚠️ Note:</strong> If the widget doesn't load or shows errors:
+            <ul>
+                <li>Check Docker containers are running: <code>docker-compose ps</code></li>
+                <li>Check backend logs: <code>docker-compose logs backend</code></li>
+                <li>Verify your API key is correct</li>
+                <li>Check browser console (F12) for errors</li>
+            </ul>
+        </div>
+
+        <div class="test-section">
+            <h3>📸 Expected Results</h3>
+            <table style="width: 100%; border-collapse: collapse;">
+                <tr style="background: #f1f3f5;">
+                    <th style="padding: 10px; text-align: left; border: 1px solid #ddd;">Item</th>
+                    <th style="padding: 10px; text-align: left; border: 1px solid #ddd;">Before</th>
+                    <th style="padding: 10px; text-align: left; border: 1px solid #ddd;">After (Customized)</th>
+                </tr>
+                <tr>
+                    <td style="padding: 10px; border: 1px solid #ddd;">Widget Header</td>
+                    <td style="padding: 10px; border: 1px solid #ddd;"><code>AI Support</code></td>
+                    <td style="padding: 10px; border: 1px solid #ddd;"><code>Your Custom Name</code></td>
+                </tr>
+                <tr>
+                    <td style="padding: 10px; border: 1px solid #ddd;">Greeting</td>
+                    <td style="padding: 10px; border: 1px solid #ddd;"><code>Hello! How can I help you today?</code></td>
+                    <td style="padding: 10px; border: 1px solid #ddd;"><code>Your Custom Greeting</code></td>
+                </tr>
+                <tr>
+                    <td style="padding: 10px; border: 1px solid #ddd;">Identity</td>
+                    <td style="padding: 10px; border: 1px solid #ddd;"><code>I'm eLanka Chat AI...</code></td>
+                    <td style="padding: 10px; border: 1px solid #ddd;"><code>I'm [Your Bot Name]...</code></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <!-- Widget Script -->
+    <script src="/widget.iife.js"></script>
+    <script>
+        function initWidget() {
+            const apiKey = document.getElementById('apiKeyInput').value.trim();
+            const statusDiv = document.getElementById('widgetStatus');
+            
+            if (!apiKey) {
+                statusDiv.className = 'widget-status error';
+                statusDiv.textContent = '❌ Please enter your API key first!';
+                return;
+            }
+
+            if (!apiKey.startsWith('nx_')) {
+                statusDiv.className = 'widget-status error';
+                statusDiv.textContent = '❌ Invalid API key format. Should start with "nx_"';
+                return;
+            }
+
+            try {
+                // Initialize the widget
+                if (window.eLanka Chat AIWidget) {
+                    window.eLanka Chat AIWidget.init(apiKey);
+                    statusDiv.className = 'widget-status success';
+                    statusDiv.innerHTML = '✅ Widget loaded successfully!<br>👉 Click the chat icon in the bottom-right corner to test.';
+                    
+                    // Save API key for future use
+                    localStorage.setItem('test_api_key', apiKey);
+                } else {
+                    statusDiv.className = 'widget-status error';
+                    statusDiv.textContent = '❌ Widget script not loaded. Check if /widget.iife.js exists.';
+                }
+            } catch (error) {
+                statusDiv.className = 'widget-status error';
+                statusDiv.textContent = '❌ Error: ' + error.message;
+            }
+        }
+
+        // Auto-load saved API key
+        window.addEventListener('DOMContentLoaded', () => {
+            const savedKey = localStorage.getItem('test_api_key');
+            if (savedKey) {
+                document.getElementById('apiKeyInput').value = savedKey;
+            }
+        });
+    </script>
+</body>
+</html>

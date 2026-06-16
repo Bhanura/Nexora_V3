@@ -1,0 +1,47 @@
+# Docker-specific ignores
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+
+# Environment files
+.env
+.env.*
+!.env.docker
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Data directories
+data/
+logs/
+*.log
+
+# MongoDB data (handled by volumes)
+mongodb_data/
+
+# Qdrant data (handled by volumes)
+qdrant_storage/
+
+# Git
+.git/
+.gitignore
+
+# Documentation
+docs/
+*.md
+!README.md

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>eLanka Chat AI Widget Test Page</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        .container {
+            background: white;
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+        .instructions {
+            background: #f0f9ff;
+            border-left: 4px solid #3b82f6;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+        .instructions h2 {
+            margin-top: 0;
+            color: #1e40af;
+            font-size: 18px;
+        }
+        .instructions ol {
+            margin: 10px 0;
+            padding-left: 20px;
+        }
+        .instructions li {
+            margin: 8px 0;
+            color: #334155;
+        }
+        code {
+            background: #e2e8f0;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            color: #dc2626;
+        }
+        .success {
+            background: #f0fdf4;
+            border-left: 4px solid #22c55e;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 8px;
+            color: #166534;
+        }
+        .content {
+            line-height: 1.6;
+            color: #475569;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #e2e8f0;
+            color: #64748b;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🤖 eLanka Chat AI Widget Test Page</h1>
+        <p class="content">
+            This is a test page to verify your eLanka Chat AI chatbot widget integration. 
+            Look for the chat icon in the bottom-right corner of your screen.
+        </p>
+
+        <div class="instructions">
+            <h2>📝 How to Use This Test Page:</h2>
+            <ol>
+                <li>Replace <code>YOUR_API_KEY_HERE</code> in the script below with your actual API key</li>
+                <li>Replace <code>http://localhost:3000</code> with your eLanka Chat AI server URL</li>
+                <li>Save this file and open it in your browser</li>
+                <li>Look for the chat widget in the bottom-right corner</li>
+                <li>Click to open and test your chatbot!</li>
+            </ol>
+        </div>
+
+        <div class="success">
+            ✅ If you see the chat icon, your widget is successfully loaded!
+        </div>
+
+        <div class="content">
+            <h3>Testing Checklist:</h3>
+            <ul>
+                <li>✓ Widget appears in bottom-right corner</li>
+                <li>✓ Shows your custom chatbot name</li>
+                <li>✓ Displays your custom greeting message</li>
+                <li>✓ Responds to questions</li>
+                <li>✓ Uses your custom personality</li>
+            </ul>
+        </div>
+
+        <div class="footer">
+            <p>Powered by <strong>eLanka Chat AI</strong> - Intelligent Document Assistant</p>
+        </div>
+    </div>
+
+    <!-- eLanka Chat AI Widget Integration -->
+    <script>
+        (function() {
+            var script = document.createElement('script');
+            // IMPORTANT: Replace with your actual eLanka Chat AI server URL
+            script.src = 'http://localhost:3000/widget.iife.js';
+            script.onload = function() {
+                // IMPORTANT: Replace YOUR_API_KEY_HERE with your actual API key
+                window.eLanka Chat AIWidget.init('YOUR_API_KEY_HERE', {
+                    apiUrl: 'http://localhost:3000/api'  // Your eLanka Chat AI server API URL
+                });
+            };
+            script.onerror = function() {
+                console.error('Failed to load eLanka Chat AI widget. Please check the server URL.');
+            };
+            document.body.appendChild(script);
+        })();
+    </script>
+</body>
+</html>
